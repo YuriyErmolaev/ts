@@ -3,24 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="Query_typing_v1/query_typing.js"></script>
 </head>
 <body>
 <div id="content"></div>
 
-<script type="text/javascript">
-    var content = document.getElementById('content');
-    var socket = new WebSocket('ws://localhost:1337');
-    socket.onopen = function () {
-        socket.send('hello from the client');
-    };
+    <script type="text/javascript">
 
-    socket.onmessage = function (message) {
-        content.innerHTML += message.data +'<br />';
-    };
+        let endpoint = 'ws://localhost:5000';
 
-    socket.onerror = function (error) {
-        console.log('WebSocket error: ' + error);
-    };
-</script>
+        let content = document.getElementById('content');
+        let socket = new WebSocket(endpoint);
+
+        socket.onopen = function () {
+            socket.send('hello from the client');
+        };
+
+        socket.onmessage = function (message) {
+            content.innerHTML += message.data +'<br />';
+        };
+
+        socket.onerror = function (error) {
+            console.log('WebSocket error: ' + error);
+        };
+
+        let payment = {
+            "sum": 20000,
+            "from": 2,
+            "to": 5
+        };
+
+        sendPayment(payment, endpoint );
+
+
+    </script>
 </body>
 </html>
