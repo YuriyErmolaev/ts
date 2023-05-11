@@ -13,19 +13,7 @@
         let endpoint = 'ws://localhost:5000';
 
         let content = document.getElementById('content');
-        // let socket = new WebSocket(endpoint);
-        //
-        // socket.onopen = function () {
-        //     socket.send('hello from the client');
-        // };
-        //
-        // socket.onmessage = function (message) {
-        //     content.innerHTML += message.data +'<br />';
-        // };
-        //
-        // socket.onerror = function (error) {
-        //     console.log('WebSocket error: ' + error);
-        // };
+        let socket = new WebSocket(endpoint);
 
         let payment = {
             "sum": 20000,
@@ -33,8 +21,20 @@
             "to": 5
         };
 
-        sendPayment(payment, endpoint );
+        socket.onopen = function () {
+            // socket.send('hello from the client');
+            socket.send( JSON.stringify(payment) );
+        };
 
+        socket.onmessage = function (response) {
+            // content.innerHTML += message.data +'<br />';
+            let typizedResponse =  getResultOfPayment(response);
+            console.log('typizedResponse', typizedResponse);
+        };
+
+        socket.onerror = function (error) {
+            console.log('WebSocket error: ' + error);
+        };
 
     </script>
 </body>
