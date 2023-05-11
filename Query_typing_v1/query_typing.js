@@ -3,9 +3,10 @@ var PaymentStatus;
     PaymentStatus["SUCCESS"] = "success";
     PaymentStatus["FAIL"] = "fail";
 })(PaymentStatus || (PaymentStatus = {}));
-function getResultOfPayment(response) {
-    var obj = JSON.parse(response.data);
-    // console.log('JSON response from server: ', obj);
-    if (obj.status == 'success')
+function getResultOfPayment(inpResp) {
+    var obj = JSON.parse(inpResp.data);
+    if (obj.status == 'success') {
         return obj;
+    }
+    return obj;
 }

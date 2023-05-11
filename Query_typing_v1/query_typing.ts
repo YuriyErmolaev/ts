@@ -32,9 +32,14 @@ interface IResponseFail {
 
 type response = IResponseSuccess | IResponseFail;
 
-function getResultOfPayment(response): IResponseSuccess | IResponseFail {
-    let obj = JSON.parse(response.data);
-    // console.log('JSON response from server: ', obj);
-    if (obj.status == 'success')
+function getResultOfPayment(inpResp: any): response {
+    let obj = JSON.parse(inpResp.data);
+    if (obj.status == 'success'){
         return obj;
+    }
+    return obj;
 }
+
+type f = ( inpResp: response ) => number;
+
+
