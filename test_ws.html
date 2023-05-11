@@ -13,19 +13,19 @@
         let endpoint = 'ws://localhost:5000';
 
         let content = document.getElementById('content');
-        let socket = new WebSocket(endpoint);
-
-        socket.onopen = function () {
-            socket.send('hello from the client');
-        };
-
-        socket.onmessage = function (message) {
-            content.innerHTML += message.data +'<br />';
-        };
-
-        socket.onerror = function (error) {
-            console.log('WebSocket error: ' + error);
-        };
+        // let socket = new WebSocket(endpoint);
+        //
+        // socket.onopen = function () {
+        //     socket.send('hello from the client');
+        // };
+        //
+        // socket.onmessage = function (message) {
+        //     content.innerHTML += message.data +'<br />';
+        // };
+        //
+        // socket.onerror = function (error) {
+        //     console.log('WebSocket error: ' + error);
+        // };
 
         let payment = {
             "sum": 20000,
