@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="Query_typing_v1/query_typing.js"></script>
+    <script src="query_typing/query_typing.js"></script>
 </head>
 <body>
 <div id="content"></div>
@@ -28,8 +28,11 @@
 
         socket.onmessage = function (response) {
             // content.innerHTML += message.data +'<br />';
-            let typizedResponse =  getResultOfPayment(response);
-            console.log('typizedResponse', typizedResponse);
+            let ResponseObj = getResponseObj(response);
+                console.log('ResponseObj: ', ResponseObj );
+            let dataID = getIdFromData(ResponseObj);
+                console.log('dataID: ', dataID );
+
         };
 
         socket.onerror = function (error) {
