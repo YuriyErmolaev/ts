@@ -1,5 +1,12 @@
 
-const data = [
+interface User {
+    id: number;
+    name: string;
+}
+
+type UserList = User[];
+
+const data: UserList = [
     {id: 1, name: 'John'},
     {id: 2, name: 'Petr'},
     {id: 3, name: 'Max'}
