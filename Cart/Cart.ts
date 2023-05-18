@@ -44,6 +44,10 @@ class Cart {
     public setDelivery(delivery: DeliveryOptions){
         this.delivery = delivery;
     };
+    public getDelivery(): DeliveryOptions {
+        return this.delivery;
+    };
+
     public checkOut(){
         if(this.products.length == 0)
             throw new Error('There is no one product in cart');
@@ -61,4 +65,5 @@ cart.delProduct(1);
 cart.setDelivery(new DeliveryHome(new Date(), 'Abakan, Lenina st. 4-39'));
 console.log(cart.getSum());
 console.log(cart.checkOut());
+console.log('cart.getDelivery(): ', cart.getDelivery());
 // console.log(cart);

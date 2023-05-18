@@ -1,3 +1,4 @@
+"use strict";
 var PaymentStatus;
 (function (PaymentStatus) {
     PaymentStatus["SUCCESS"] = "success";
@@ -10,7 +11,7 @@ function isSuccess(res) {
     return false;
 }
 function getResponseObj(inpResp) {
-    var obj = JSON.parse(inpResp.data);
+    let obj = JSON.parse(inpResp.data);
     return isSuccess(obj) ? obj : obj;
 }
 function getIdFromData(res) {
