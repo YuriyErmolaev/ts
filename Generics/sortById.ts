@@ -16,7 +16,10 @@ interface ID {
   id: number;
 };
 
-function sortById<T extends ID>(data: T[], type: 'asc' | 'desc' = 'asc'): T[]
+function sortById<T extends ID>(
+    data: T[],
+    type: 'asc' | 'desc' = 'asc'
+): T[]
 {
     return data.sort( (a, b) => {
         switch (type){
