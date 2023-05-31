@@ -1,6 +1,5 @@
 "use strict";
-const obj = {};
-const arr = ['a', 'b', 'c'];
+const obj = {}, arr = ['a', 'b', 'c'];
 const value = 'value';
 let currentObj = obj;
 for (let i = 0; i < arr.length - 1; i++) {
@@ -12,3 +11,4 @@ for (let i = 0; i < arr.length - 1; i++) {
 }
 currentObj[arr[arr.length - 1]] = value;
 console.log('obj: ', obj);
+console.log('currentObj: ', currentObj);
