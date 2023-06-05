@@ -5,7 +5,12 @@ class List {
     constructor(public items: string[]) { }
 }
 
-type ListType = GConstructor{List};
+class Accordion {
+    isOpened: boolean;
+}
+
+type ListType = GConstructor<List>;
+type AccordionType = GConstructor<Accordion>;
 
 class ExtendedListClass extends List {
     first(){
@@ -13,7 +18,7 @@ class ExtendedListClass extends List {
     }
 }
 //Mixin:
-function ExtendedList<TBase extends ListType>(Base: TBase){
+function ExtendedList<TBase extends ListType & AccordionType>(Base: TBase){
     return class ExtendedList extends Base {
         first() {
             return this.items[0];
@@ -21,6 +26,14 @@ function ExtendedList<TBase extends ListType>(Base: TBase){
     }
 }
 
-const list = ExtendedList(List);
-const res2 = new list(['first', 'second']);
-console.log(res2.first());
+class AccordionList {
+    isOpened: boolean;
+    constructor(public items: string[]) { }
+}
+
+
+
+// const list = ExtendedList(List);
+const list = ExtendedList(AccordionList);
+const res_ = new list(['first', 'second']);
+console.log(res_.first());
