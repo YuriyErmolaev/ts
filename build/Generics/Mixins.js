@@ -4,15 +4,14 @@ class List {
         this.items = items;
     }
 }
-{
-    List;
+class Accordion {
 }
-;
 class ExtendedListClass extends List {
     first() {
         return this.items[0];
     }
 }
+//Mixin:
 function ExtendedList(Base) {
     return class ExtendedList extends Base {
         first() {
@@ -20,6 +19,12 @@ function ExtendedList(Base) {
         }
     };
 }
-const list = ExtendedList(List);
-const res = new list(['first', 'second']);
-console.log(res.first());
+class AccordionList {
+    constructor(items) {
+        this.items = items;
+    }
+}
+// const list = ExtendedList(List);
+const list = ExtendedList(AccordionList);
+const res_ = new list(['first', 'second']);
+console.log(res_.first());
