@@ -30,14 +30,14 @@ const group = (arGroups: Data[], keyGroup: string): object => {
 console.log(group(dataInput, 'group'));
 
 //another realization
-interface IGroup {
+interface IGroup<T> {
     [key: string]: T[];
 }
 
 type key = number|string|symbol;
 
 // const group2<T> = (arGroups: T[], keyGroup: keyof T): IGroup => {
-function group2<T extends Record<key, any>> (arGroups: T[], keyGroup: keyof T): IGroup {
+function group2<T extends Record<key, any>> (arGroups: T[], keyGroup: keyof T): IGroup<T> {
     return arGroups.reduce<IGroup<T>>((map: IGroup<T>, item) => {
         const itemKey = item[keyGroup];
         let curEl = map[itemKey];
