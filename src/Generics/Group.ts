@@ -14,30 +14,16 @@ let resultTemplate = {
     '2': [{group: 2, name: 'c'}],
 }
 
-interface IGroup<T> {
-    [key: string]: T[]
-}
-
-type key = string|number;
-
-function group<T extends Record<key, any>, K extends keyof T>
-(
-    inputArray: T[],
-    key: K
-): IGroup<T>
+function group(inp, key)
 {
-    let accCurKey: key;
-    return inputArray.reduce<IGroup<T>>((acc, item): IGroup<T> => {
-        accCurKey = item[key];
-        if(!acc.hasOwnProperty(accCurKey)) acc[accCurKey] = [];
-        acc[accCurKey].push(item);
-        return acc;
+    let groupKey;
+    let res = inp.reduce( (res, item)=>{
+        groupKey  = item[key];
+        if(!res.hasOwnProperty(groupKey) ) res[groupKey] = [];
+        res[groupKey].push(item);
+        return res;
     }, {});
+    return res;
 }
 
-console.log('result group: ', group(dataInput, 'group'));
-
-
-
-
-
+console.log( 'group(dataInput, \'group\') :', group(dataInput, 'group') );
